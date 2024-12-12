@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>都の北学園 創作部</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            animation: slideIn 1s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            margin: 0 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #4CAF50;
+            transform: scale(1.1);
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        section {
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: popIn 0.6s forwards;
+opacity: 0;
+}
+
+@keyframes popIn {
+from {
+transform: scale(0.9);
+opacity: 0;
+}
+
+to {
+transform: scale(1);
+opacity: 1;
+}
+}
+
+h1 {
+font-size: 3em;
+margin-bottom: 10px;
+}
+
+h2 {
+font-size: 2.5em;
+margin-top: 20px;
+}
+
+ul {
+list-style-type: none;
+padding: 0;
+}
+
+ul li {
+margin: 10px 0;
+font-size: 1.2em;
+}
+
+.gallery {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.gallery img {
+width: 200px;
+height: auto;
+margin: 10px;
+border-radius: 8px;
+transition: transform 0.5s;
+}
+
+.gallery img:hover {
+transform: scale(1.1);
+}
+
+footer {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 10px;
+position: relative;
+bottom: 0;
+width: 100%;
+margin-top: 20px;
+}
+
+button {
+background-color: #4CAF50;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+transition: background-color 0.3s;
+border-radius: 5px;
+}
+
+button:hover {
+background-color: #45a049;
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1>都の北学園 創作部</h1>
+<p>現在作成中</p>
+</header>
+<nav>
+<a href="#introduction">部紹介</a>
+<a href="#activities">活動内容</a>
+<a href="#members">メンバー紹介</a>
+<a href="#gallery">ギャラリー</a>
+<a href="#contact">連絡先</a>
+</nav>
+
+<div class="container">
+<section id="introduction">
+<h2>部活の紹介</h2>
+<p>現在作成中</p>
+</section>
+
+<section id="activities">
+<h2>活動内容</h2>
+<ul>
+<li>現在作成中</li>
+</ul>
+</section>
+
+<section id="members">
+<h2>メンバー紹介</h2>
+<p>現在作成中</p>
+<button onclick="alert('現在作成中！')">参加申し込み</button>
+</section>
+
+<section id="gallery">
+<h2>ギャラリー</h2>
+<div class="gallery">
+<img src="image1.jpg" alt="作品1">
+<img src="image2.jpg" alt="作品2">
+<img src="image3.jpg" alt="作品3">
+<img src="image4.jpg" alt="作品4">
+</div>
+</section>
+
+<section id="contact">
+<h2>連絡先</h2>
+<p>お問い合わせは以下のメールアドレスまでお願いします。</p>
+<p>Email:現在作成中</p>
+</section>
+</div>
+
+<footer>
+<p>&copy; 2024 都の北学園 創作部</p>
+</footer>
+</body>
+
+</html>

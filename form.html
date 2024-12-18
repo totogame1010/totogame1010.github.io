@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせフォーム</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(120deg, #74b9ff, #a29bfe);
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2d3436;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: inline-block;
+      color: #2d3436;
+    }
+    .required {
+      color: red;
+    }
+    .optional {
+      color: gray;
+    }
+    input[type="text"], textarea, select, input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: #0984e3;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #74b9ff;
+    }
+    .note {
+      font-size: 12px;
+      color: #636e72;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>お問い合わせフォーム</h1>
+    <form id="contactForm">
+      <label for="name">お名前 <span class="required">必須</span></label>
+      <input type="text" id="name" name="name" placeholder="お名前を入力してください" required>
+
+      <label for="role">あなたは次のうちどれですか？ <span class="required">必須</span></label>
+      <select id="role" name="role" required>
+        <option value="" disabled selected>選択してください</option>
+        <option value="児童・生徒">児童・生徒</option>
+        <option value="先生">先生</option>
+        <option value="保護者">保護者</option>
+        <option value="その他">その他</option>
+      </select>
+
+      <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
+      <textarea id="message" name="message" rows="5" placeholder="お問い合わせ内容を記載してください" required></textarea>
+
+      <label for="other">その他 <span class="optional">任意</span></label>
+      <textarea id="other" name="other" rows="3" placeholder="その他の内容があれば記載してください"></textarea>
+
+      <label for="email">返信が必要な場合はメールアドレスを記載してください <span class="optional">任意</span></label>
+      <input type="email" id="email" name="email" placeholder="メールアドレスを入力してください">
+
+      <button type="submit">送信</button>
+    </form>
+    <p class="note">※ 必須項目はすべて記入してください。</p>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const formData = {
+        name: document.getElementById("name").value,
+        role: document.getElementById("role").value,
+        message: document.getElementById("message").value,
+        other: document.getElementById("other").value || "",
+        email: document.getElementById("email").value || ""
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbzcYvlCjMM4lW0eF77FGEub8wCpE8SlcoG6dsXNcjFNmJAx2_1HPK1peKjlDBjKK2NSWw/exec", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("フォームが送信されました！");
+        document.getElementById("contactForm").reset();
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("エラーが発生しました。もう一度お試しください。");
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,174 +1,151 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>都の北学園 中学校 創作部</title>
-    <style>
-        /* Reset CSS */
-        body, h1, p, ul, li, a {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            text-decoration: none;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>都の北学園 創作部</title>
+  <style>
+    /* ベーススタイル */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+      animation: backgroundShift 10s infinite alternate;
+      color: #333;
+      overflow-x: hidden;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden;
-        }
+    @keyframes backgroundShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
 
-        /* カラフルな背景と中央コンテンツ */
-        body {
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb);
-            background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
-        }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .menu-button {
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      background: none;
+      border: none;
+    }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            color: white;
-        }
+    .menu-button.open {
+      transform: rotate(90deg);
+    }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeIn 2s;
-        }
+    nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 60%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: right 0.5s ease;
+      z-index: 9;
+    }
 
-        p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            line-height: 1.6;
-            margin: 0 auto;
-            animation: fadeIn 2.5s;
-        }
+    nav.open {
+      right: 0;
+    }
 
-        /* メニューボタンのスタイル */
-        .menu-btn {
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      transition: color 0.3s ease;
+    }
 
-        .menu-btn div {
-            width: 30px;
-            height: 3px;
-            background: white;
-            border-radius: 3px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
+    nav a:hover {
+      color: #ff9a9e;
+    }
 
-        .menu-btn.open div:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
+    .main-content {
+      padding: 5rem 2rem;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
 
-        .menu-btn.open div:nth-child(2) {
-            opacity: 0;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .menu-btn.open div:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+    h1 {
+      font-size: 3rem;
+      margin: 1rem 0;
+      color: white;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    }
 
-        /* サイドメニュー */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            transform: translateX(-100%);
-            transition: transform 0.4s ease;
-        }
+    p {
+      font-size: 1.2rem;
+      color: white;
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    }
 
-        .side-menu.open {
-            transform: translateX(0);
-        }
+    .button {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.2rem;
+      color: white;
+      background: #ff758c;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
 
-        .side-menu ul {
-            margin-top: 3rem;
-            padding: 0;
-        }
-
-        .side-menu ul li {
-            margin: 1rem 0;
-            text-align: center;
-        }
-
-        .side-menu ul li a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .side-menu ul li a:hover {
-            color: #fad0c4;
-        }
-
-        /* フェードインアニメーション */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    .button:hover {
+      background: #ff9a9e;
+    }
+  </style>
 </head>
 <body>
-    <button class="menu-btn" id="menuBtn">
-        <div></div>
-        <div></div>
-        <div></div>
-    </button>
+  <header>
+    <button id="menuButton" class="menu-button">≡</button>
+    <h2>都の北学園 創作部</h2>
+  </header>
 
-    <div class="side-menu" id="sideMenu">
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">創作部について</a></li>
-            <li><a href="activities.html">活動内容</a></li>
-            <li><a href="gallery.html">ギャラリー</a></li>
-            <li><a href="contact.html">お問い合わせ</a></li>
-        </ul>
-    </div>
+  <nav id="menu">
+    <a href="index.html">ホーム</a>
+    <a href="about.html">私たちについて</a>
+    <a href="works.html">作品紹介</a>
+    <a href="contact.html">お問い合わせ</a>
+  </nav>
 
-    <div class="container">
-        <h1>都の北学園 中学校 創作部</h1>
-        <p>創造の翼を広げ、夢を形にする。私たちと一緒に新しい世界を創り上げましょう！</p>
-    </div>
+  <main class="main-content">
+    <h1>ようこそ、創作部の世界へ！</h1>
+    <p>創作部では、絵、文、音楽、アニメーションなど多彩な作品を生み出しています。みんなで楽しく創作活動をしています！</p>
+    <a href="works.html" class="button">作品をみる</a>
+  </main>
 
-    <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const sideMenu = document.getElementById('sideMenu');
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const menu = document.getElementById('menu');
 
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('open');
-            sideMenu.classList.toggle('open');
-        });
-    </script>
+    menuButton.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      menuButton.textContent = isOpen ? '✕' : '≡';
+      menuButton.classList.toggle('open', isOpen);
+    });
+  </script>
 </body>
 </html>
